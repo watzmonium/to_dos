@@ -1,0 +1,15 @@
+<form action="/lists" method="post">
+  <%# form sets the frame of data to be submitted, action where to send data, and method specifies what to do%>
+  <dl> <%# description list - no bullet points like ul/li %>
+    <dt> <%# description term %>
+      <label for="list_name">Enter the name for your new list:</label>
+    </dt>
+    <dd> <%# description definition %>
+      <input name="list_name" placeholder="List Name" type="text" value="">
+    </dd>
+  </dl>
+  <fieldset class="actions"> <%# group related things in a form%>
+    <input type="submit" value="Save">
+    <a href="/lists">Cancel</a>
+  </fieldset>
+</form>

@@ -1,0 +1,28 @@
+<section id="todos">
+  <header> 
+   <a><h2>Editing "<%= @name %>"</h2></a>
+   <ul>
+    <li>
+      <form action="/lists/<%= @number %>/delete" method="post">
+      <button type="submit" class="delete">Delete List</button>
+      </form>
+    </li>
+  </ul>
+  </header>
+</section>
+
+<form action="/lists/<%= @number %>/edit" method="post">
+  <%# form sets the frame of data to be submitted, action where to send data, and method specifies what to do%>
+  <dl> <%# description list - no bullet points like ul/li %>
+    <dt> <%# description term %>
+      <label for="list_name">Enter the new name for your new list:</label>
+    </dt>
+    <dd> <%# description definition %>
+      <input name="list_name" placeholder="List Name" type="text" value="<%= params['list_name'] || @name %>">
+    </dd>
+  </dl>
+  <fieldset class="actions"> <%# group related things in a form%>
+    <input type="submit" value="Save">
+    <a href="/lists/<%= @number %>">Cancel</a>
+  </fieldset>
+</form>

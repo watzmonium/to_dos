@@ -1,0 +1,14 @@
+Sinatra app for Todo webapp
+
+# Notes
+  - Default view should ask to add one with an arrow pointing to the '+'
+  - When a new list is created, should generate a success message
+  - Each list shows the number of items in it on the main screen
+  - When an item is added to the list, should generate a success message
+  - When a list has at least 1 item, the complete all box should appear
+    - If you click that box, it should show a confirmation box
+  - Checked items become greyed out and strikethrough
+  - When all list items are checked, the list title should also be grey and striked
+  - If you submit an empty string for your todo, you should get an error message
+    - Todos should be between 1 and 200 chars
+    - Same error for empty list name

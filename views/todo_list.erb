@@ -1,0 +1,53 @@
+<% content_for :header_links do %>
+  <p><a class="list" href="/lists">All lists</a></p>
+<% end %>
+
+<section id="todos" class="<%= list_class(@current_list) %>">
+  <header> 
+    <h2><%= @current_list[:name] %></h2>
+    <ul>
+    <% unless size_zero?(@current_list) %>
+      <li>
+        <form action="<%= list_url(@number) %>/complete_all" method="post">
+          <button class="check" type="submit">Complete All</button>
+        </form>
+      </li>
+    <% end %>
+      <li><a class="edit" href="<%= list_url(@number) %>/edit">Edit List</a></li>
+    </ul>
+  </header>
+  <ul>
+  <% @todos.each_with_index do |todo, idx| %>
+    <% if todo[:completed] %>
+      <li class="complete">
+    <% else %>
+      <li>
+    <% end %>
+      <form action="<%= list_url(@number) %>/todos/<%= idx %>" method="post" class="check">
+        <input type="hidden" name="completed" value="<%= !todo[:completed] %>" />
+        <button type="submit">Complete</button>
+      </form>
+      <h3><%= todo[:name] %></h3>
+        <form action="/lists/<%= @number %>/delete_item?value=<%= idx %>" method="post" class="delete">
+          <button type="submit">Delete</button>
+      </form>
+    </li>
+  <% end %>
+  </ul>
+</section>
+
+
+<form action=<%= list_url(@number) %> method="post">
+  <%# form sets the frame of data to be submitted, action where to send data, and method specifies what to do%>
+  <dl> <%# description list - no bullet points like ul/li %>
+    <dt> <%# description term %>
+      <label for="list_item">Enter a new todo item:</label>
+    </dt>
+    <dd> <%# description definition %>
+      <input name="list_item" placeholder="Something to do..." type="text" value="">
+    </dd>
+  </dl>
+  <fieldset class="actions"> <%# group related things in a form%>
+    <input type="submit" value="Add">
+  </fieldset>
+</form>
