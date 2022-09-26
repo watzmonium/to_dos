@@ -9,6 +9,7 @@ configure do
   set :session_secret, 'secret' # in production this 'secret' should be store in env and not just a word.
   # if string is not specified, sinatra will pack a random value, so if you restart the application,
   # the secret changes and any existing sessions will become invalid
+  set :erb, :escape_html => true
 end
 
 before do
