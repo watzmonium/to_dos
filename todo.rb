@@ -107,6 +107,7 @@ post '/lists/:number' do
   list_item = params['list_item'].strip
   error = error_for_list_name(list_item, 'List item')
   if error
+    @current_list = session[:lists][params['number'].to_i]
     @name = session[:lists][@number.to_i][:name]
     @todos = session[:lists][@number.to_i][:todos]
     session[:failure] = error
