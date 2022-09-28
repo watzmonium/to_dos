@@ -17,18 +17,18 @@
     </ul>
   </header>
   <ul>
-  <% @todos.each_with_index do |todo, idx| %>
+  <% @todos.each do |todo| %>
     <% if todo[:completed] %>
       <li class="complete">
     <% else %>
       <li>
     <% end %>
-      <form action="<%= list_url(@number) %>/todos/<%= idx %>" method="post" class="check">
+      <form action="<%= list_url(@number) %>/todos/<%= todo[:id] %>" method="post" class="check">
         <input type="hidden" name="completed" value="<%= !todo[:completed] %>" />
         <button type="submit">Complete</button>
       </form>
       <h3><%= todo[:name] %></h3>
-        <form action="/lists/<%= @number %>/delete_item?value=<%= idx %>" method="post" class="delete">
+        <form action="/lists/<%= @number %>/delete_item?value=<%= todo[:id] %>" method="post" class="delete">
           <button type="submit">Delete</button>
       </form>
     </li>

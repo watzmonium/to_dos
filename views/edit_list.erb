@@ -3,7 +3,7 @@
    <a><h2>Editing "<%= @name %>"</h2></a>
    <ul>
     <li>
-      <form action="/lists/<%= @number %>/delete" method="post">
+      <form class="delete" action="/lists/<%= @number %>/delete" method="post">
       <button type="submit" class="delete">Delete List</button>
       </form>
     </li>
@@ -26,3 +26,4 @@
     <a href="/lists/<%= @number %>">Cancel</a>
   </fieldset>
 </form>
+

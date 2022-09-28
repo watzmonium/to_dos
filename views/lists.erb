@@ -4,10 +4,10 @@
 
 <ul id="lists">
   <% #s_list = @lists %>
-  <% @lists.each_with_index do |list, idx| %>
+  <% @lists.each do |list| %>
     <li class="<%= list_class(list) %>">
       <a>
-        <h2><a href=<%= list_url(idx) %>><%= list[:name] %></a></h2>
+        <h2><a href=<%= list_url(list[:id]) %>><%= list[:name] %></a></h2>
         <p><%= remaining(list[:todos]) %>/<%= list[:todos].size %></p>
       </a>
     </li>
