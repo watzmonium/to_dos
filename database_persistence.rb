@@ -76,4 +76,8 @@ class DatabasePersistence
     sql = "DELETE FROM todos WHRE id = $1"
     query(sql, id)
   end
+
+  def disconnect
+    @db.close
+  end
 end
