@@ -82,6 +82,9 @@ helpers do
   #   highest + 1
   # end
 
+  def disconnect
+    @db.close
+  end
 end
 
 before do
@@ -89,6 +92,10 @@ before do
   @session = session
   @size_error = ' must be at least 1 character and less than 200 characters'
   @unique_error = ' must unique! '
+end
+
+after do
+  @storage.disconnect
 end
 
 get '/' do
